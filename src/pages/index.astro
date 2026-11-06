@@ -22,7 +22,7 @@ const about = [
 
 // --- Social media post (TODO: save your Instagram post image in public/images/) ---
 const socialPost = {
-  image: file("images/ict-days-2027.png"),
+  image: file("images/ict-days-2027-debug.png"),
   alt: "Instagram post by DISI UniTrento on a dark blue background with a yellow circle: 'ICT Days 2027. Debug your career. Internships · Jobs · Thesis. Save the date · April' and a yellow button 'ictdays.it'.",
   // Backticks (`) let the caption span several lines; the line breaks show on the page.
   caption: `Want to meet tech companies in person? 👀
@@ -124,7 +124,7 @@ const websites = [
         <div class="container">
           <h2>Social media</h2>
           <figure class="social-post">
-            <img src={socialPost.image} alt={socialPost.alt} width="238" height="278" loading="lazy" />
+            <img src={socialPost.image} alt={socialPost.alt} width="241" height="274" loading="lazy" />
             <figcaption>
               <p>{socialPost.caption}</p>
               {socialPost.link && <a href={socialPost.link}>View the post on Instagram</a>}

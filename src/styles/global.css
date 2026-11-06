@@ -146,25 +146,15 @@ section.alt {
   margin: 0 0 1.25rem;
 }
 
-/* Small blue label above the name, with a short line in front of it */
+/* Small blue label above the name */
 .hero-label {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  display: block;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.75rem;
-}
-
-.hero-label::before {
-  content: "";
-  width: 2.5rem;
-  height: 3px;
-  background: var(--accent);
-  flex-shrink: 0;
 }
 
 /* The name: very big, smaller on phones */
@@ -232,10 +222,12 @@ section.alt {
   white-space: pre-line; /* keeps the line breaks of the caption */
 }
 
-/* Side by side on screens wider than 700px */
+/* Side by side on screens wider than 700px:
+   the image takes only its own width ("auto"), the text takes the rest ("1fr") */
 @media (min-width: 700px) {
   .social-post {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
   }
 }
 

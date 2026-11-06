@@ -23,7 +23,7 @@ const about = [
 // --- Social media post (TODO: save your Instagram post image in public/images/) ---
 const socialPost = {
   image: file("images/ict-days-2027.png"),
-  alt: "Instagram post by DISI UniTrento on a dark blue background: 'ICT Days 2027 · April. Tech companies. One roof. Internships, jobs and thesis projects. Meet them in person.' with a yellow button 'ictdays.it'.",
+  alt: "Instagram post by DISI UniTrento on a dark blue background with a yellow circle: 'ICT Days 2027. Debug your career. Internships · Jobs · Thesis. Save the date · April' and a yellow button 'ictdays.it'.",
   // Backticks (`) let the caption span several lines; the line breaks show on the page.
   caption: `Want to meet tech companies in person? 👀
 ICT Days 2027 brings many companies under one roof:
@@ -44,12 +44,12 @@ const projects = [
     text: "An AI assistant that turns an installer's WhatsApp message into a confirmed order for the supplier. It asks 3–6 suppliers for a quote at the same time, so nobody has to contact them one by one.",
   },
   {
-    title: "Who's The Murderer",
-    text: "A murder-mystery simulation where AI agents play detectives and try to solve the case. I tested how personality traits, like confidence, change the AI's answers, using 79 personas of historical and public figures.",
-  },
-  {
     title: "Pneumonia detection",
     text: "A deep learning system, built by a team I coordinated, that analyses chest X-rays to detect pneumonia. We compared two well-known image models (VGG16 and ResNet50) and tuned them for better accuracy.",
+  },
+  {
+    title: "Who's The Murderer",
+    text: "A murder-mystery simulation where AI agents play detectives and try to solve the case. I tested how personality traits, like confidence, change the AI's answers, using 79 personas of historical and public figures.",
   },
 ];
 
@@ -59,8 +59,8 @@ const websites = [
   {
     title: "This portfolio",
     text: "I designed and built this one-page website with Astro, HTML and CSS. It works on phones and computers, and it is accessible: clear contrast, alt text for images and full keyboard navigation.",
-    url: "https://github.com/kfatima0/PORTFOLIO",
-    linkText: "See the code on GitHub",
+    liveUrl: "https://kfatima0.github.io/PORTFOLIO/", // the website itself
+    codeUrl: "https://github.com/kfatima0/PORTFOLIO", // the code on GitHub
   },
 ];
 ---
@@ -73,7 +73,7 @@ const websites = [
     <title>Kaniz Fatima – Portfolio</title>
     <meta
       name="description"
-      content="Communication & Digital Content Portfolio of Kaniz Fatima, MSc AI student at the University of Trento."
+      content="Communication & Digital Content Portfolio of Kaniz Fatima, MSc Artificial Intelligence Systems student at the University of Trento."
     />
   </head>
 
@@ -98,9 +98,9 @@ const websites = [
       <!-- 1. HERO -->
       <section id="top" class="hero">
         <div class="container">
-          <h1>Kaniz Fatima – Communication &amp; Digital Content Portfolio</h1>
+          <h1>Kaniz Fatima<br />Communication &amp; Digital Content Portfolio</h1>
           <p class="lead">
-            MSc AI student at UniTN. I turn technical topics into clear content for students and companies.
+            MSc Artificial Intelligence Systems student at UniTN. I turn technical topics into clear content for students and companies.
           </p>
           <div class="buttons">
             <a class="button" href="#contact">Contact</a>
@@ -121,7 +121,7 @@ const websites = [
         <div class="container">
           <h2>Social media</h2>
           <figure class="social-post">
-            <img src={socialPost.image} alt={socialPost.alt} width="238" height="274" loading="lazy" />
+            <img src={socialPost.image} alt={socialPost.alt} width="238" height="278" loading="lazy" />
             <figcaption>
               <p>{socialPost.caption}</p>
               {socialPost.link && <a href={socialPost.link}>View the post on Instagram</a>}
@@ -134,7 +134,7 @@ const websites = [
       <section id="projects">
         <div class="container">
           <h2>Projects explained simply</h2>
-          <div class="grid">
+          <div class="grid grid-2">
             {
               projects.map((project) => (
                 <article class="card">
@@ -158,7 +158,10 @@ const websites = [
                   {site.image && <img src={site.image} alt={site.alt} width="800" height="500" loading="lazy" />}
                   <h3>{site.title}</h3>
                   <p>{site.text}</p>
-                  <a class="card-link" href={site.url}>{site.linkText}</a>
+                  <div class="card-links">
+                    <a href={site.liveUrl}>Visit the website</a>
+                    <a href={site.codeUrl}>See the code on GitHub</a>
+                  </div>
                 </article>
               ))
             }

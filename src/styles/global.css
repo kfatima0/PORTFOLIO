@@ -219,6 +219,13 @@ section.alt {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* Projects: always 2 columns on tablets/computers (2 × 2 cards), 1 column on phones */
+@media (min-width: 640px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .card {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -236,8 +243,11 @@ section.alt {
   color: var(--muted);
 }
 
-.card-link {
-  display: inline-block;
+/* Links under a website card, side by side (they wrap on small phones) */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   margin-top: 1rem;
   font-weight: 600;
 }

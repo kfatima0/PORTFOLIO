@@ -33,23 +33,17 @@ internships, jobs and thesis opportunities, all in one place 🚀
   link: "", // optional: link to the original post
 };
 
-// --- Projects: title + 2 short sentences each ---
+// --- Projects: title + 2 short sentences + link to the project ---
 const projects = [
-  {
-    title: "AURA",
-    text: "A generative AI tool, built in a team for the MediTech Challenge, that creates realistic 3D CT scans of abdominal aortic aneurysms. These synthetic scans can be used to train and test medical AI models.",
-  },
   {
     title: "SlideQuote",
     text: "An AI assistant that turns an installer's WhatsApp message into a confirmed order for the supplier. It asks 3–6 suppliers for a quote at the same time, so nobody has to contact them one by one.",
-  },
-  {
-    title: "Pneumonia detection",
-    text: "A deep learning system, built by a team I coordinated, that analyses chest X-rays to detect pneumonia. We compared two well-known image models (VGG16 and ResNet50) and tuned them for better accuracy.",
+    link: "https://github.com/kfatima0/app-slidequote",
   },
   {
     title: "Who's The Murderer",
     text: "A murder-mystery simulation where AI agents play detectives and try to solve the case. I tested how personality traits, like confidence, change the AI's answers, using 79 personas of historical and public figures.",
+    link: "https://github.com/ai-design-2026-projects/whos-the-murderer",
   },
 ];
 
@@ -143,6 +137,9 @@ const websites = [
                 <article class="card">
                   <h3>{project.title}</h3>
                   <p>{project.text}</p>
+                  <div class="card-links">
+                    <a href={project.link}>See the project on GitHub</a>
+                  </div>
                 </article>
               ))
             }

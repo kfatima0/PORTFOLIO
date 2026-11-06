@@ -143,9 +143,37 @@ section.alt {
 }
 
 .hero h1 {
-  font-size: clamp(1.9rem, 5vw, 3rem); /* smaller on phones, bigger on desktop */
-  max-width: 18em;
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Small blue label above the name, with a short line in front of it */
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.hero-label::before {
+  content: "";
+  width: 2.5rem;
+  height: 3px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* The name: very big, smaller on phones */
+.hero-name {
+  display: block;
+  font-size: clamp(2.6rem, 9vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 .lead {

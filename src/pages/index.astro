@@ -1,0 +1,186 @@
+---
+// =====================================================================
+//  CONTENT — edit the text, links and images here.
+//  Everything between the two "---" lines runs at build time only.
+// =====================================================================
+import "../styles/global.css";
+
+// Makes file paths work both on Netlify ("/") and GitHub Pages ("/PORTFOLIO/").
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const file = (path) => `${base}/${path}`;
+
+// --- Contact links (TODO: replace with your real links) ---
+const email = "kanizfatimahaq@gmail.com";
+const linkedin = "https://www.linkedin.com/in/kaniz-fatima-ai/";
+
+
+// --- About me: one string per paragraph ---
+const about = [
+  "I'm a master's student in Artificial Intelligence Systems at the University of Trento, with a bachelor's in Computer Science from Bangladesh.",
+  "I worked for 1.5 years as a Software QA Engineer, where I learned to be precise and to check every detail before something goes live. During an internship at a university office, I built an Excel tracker for the student help desk.",
+];
+
+// --- Social media post (TODO: save your Instagram post image in public/images/) ---
+const socialPost = {
+  image: file("images/ict-days-2027.png"),
+  alt: "Instagram post by DISI UniTrento on a dark blue background: 'ICT Days 2027 · April. Tech companies. One roof. Internships, jobs and thesis projects. Meet them in person.' with a yellow button 'ictdays.it'.",
+  // Backticks (`) let the caption span several lines; the line breaks show on the page.
+  caption: `Want to meet tech companies in person? 👀
+ICT Days 2027 brings many companies under one roof:
+internships, jobs and thesis opportunities, all in one place 🚀
+📅 April 2027 · Don't delay, book your meetings now 👉 ictdays.it
+#ICTDays2027 #DISI #UniTrento #CareerDay`,
+  link: "", // optional: link to the original post
+};
+
+// --- Projects: title + 2 short sentences each ---
+const projects = [
+  {
+    title: "AURA",
+    text: "A generative AI tool, built in a team for the MediTech Challenge, that creates realistic 3D CT scans of abdominal aortic aneurysms. These synthetic scans can be used to train and test medical AI models.",
+  },
+  {
+    title: "SlideQuote",
+    text: "An AI assistant that turns an installer's WhatsApp message into a confirmed order for the supplier. It asks 3–6 suppliers for a quote at the same time, so nobody has to contact them one by one.",
+  },
+  {
+    title: "Who's The Murderer",
+    text: "A murder-mystery simulation where AI agents play detectives and try to solve the case. I tested how personality traits, like confidence, change the AI's answers, using 79 personas of historical and public figures.",
+  },
+  {
+    title: "Pneumonia detection",
+    text: "A deep learning system, built by a team I coordinated, that analyses chest X-rays to detect pneumonia. We compared two well-known image models (VGG16 and ResNet50) and tuned them for better accuracy.",
+  },
+];
+
+// --- Websites: this portfolio is the first one. Add more later by copying the { ... } block.
+//     "image" and "alt" are optional: add a screenshot from public/images/ when you have one. ---
+const websites = [
+  {
+    title: "This portfolio",
+    text: "I designed and built this one-page website with Astro, HTML and CSS. It works on phones and computers, and it is accessible: clear contrast, alt text for images and full keyboard navigation.",
+    url: "https://github.com/kfatima0/PORTFOLIO",
+    linkText: "See the code on GitHub",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kaniz Fatima – Portfolio</title>
+    <meta
+      name="description"
+      content="Communication & Digital Content Portfolio of Kaniz Fatima, MSc AI student at the University of Trento."
+    />
+  </head>
+
+  <body>
+    <!-- Lets keyboard users jump straight to the content -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main">
+        <a class="nav-name" href="#top">Kaniz Fatima</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#social">Social</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#web">Web</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- 1. HERO -->
+      <section id="top" class="hero">
+        <div class="container">
+          <h1>Kaniz Fatima – Communication &amp; Digital Content Portfolio</h1>
+          <p class="lead">
+            MSc AI student at UniTN. I turn technical topics into clear content for students and companies.
+          </p>
+          <div class="buttons">
+            <a class="button" href="#contact">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ABOUT ME -->
+      <section id="about">
+        <div class="container narrow">
+          <h2>About me</h2>
+          {about.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <!-- 3. SOCIAL MEDIA -->
+      <section id="social" class="alt">
+        <div class="container">
+          <h2>Social media</h2>
+          <figure class="social-post">
+            <img src={socialPost.image} alt={socialPost.alt} width="238" height="274" loading="lazy" />
+            <figcaption>
+              <p>{socialPost.caption}</p>
+              {socialPost.link && <a href={socialPost.link}>View the post on Instagram</a>}
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 4. PROJECTS -->
+      <section id="projects">
+        <div class="container">
+          <h2>Projects explained simply</h2>
+          <div class="grid">
+            {
+              projects.map((project) => (
+                <article class="card">
+                  <h3>{project.title}</h3>
+                  <p>{project.text}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. WEB DEVELOPMENT -->
+      <section id="web" class="alt">
+        <div class="container">
+          <h2>Web development</h2>
+          <div class="grid">
+            {
+              websites.map((site) => (
+                <article class="card">
+                  {site.image && <img src={site.image} alt={site.alt} width="800" height="500" loading="lazy" />}
+                  <h3>{site.title}</h3>
+                  <p>{site.text}</p>
+                  <a class="card-link" href={site.url}>{site.linkText}</a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. CONTACT -->
+      <section id="contact">
+        <div class="container narrow">
+          <h2>Contact</h2>
+          <p>I'm happy to talk about content, communication or AI projects.</p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a></li>
+            <li><strong>LinkedIn:</strong> <a href={linkedin}>{linkedin.replace("https://www.", "")}</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© {new Date().getFullYear()} Kaniz Fatima</div>
+    </footer>
+  </body>
+</html>
